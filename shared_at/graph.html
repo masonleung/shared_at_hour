@@ -65,26 +65,22 @@
         _data = [];
         _data.push(['Hour', 'Shares', 'Clicks', 'Hour', 'Clicks per share']);
 
-        for (var i = 0, j = _data.length; i < groups.length; i++, j++)
+        for (var i = 0; i < groups.length; i++)
         {
           g = groups[i];
           _date = convertDate(g[hour_of_X], hour_of_X);
-          ar = [_date, g['shares'], g['clicks'], _date, g['clicks_per_share']];
-          _data[j] = ar;
+          _data.push([_date, g['shares'], g['clicks'], _date, g['clicks_per_share']]);
         }
         var data = google.visualization.arrayToDataTable(_data);
 
 
-        var title = 'Correlation between shares, clicks, cps and __TOKEN__, group by = ' + group_by + ' ' + pivot;
-
+        var shared_at = 'shared at hour of day';
         if (hour_of_X.indexOf('week') > -1)
         {
-          title = title.replace('__TOKEN__', 'shared at hour of week');
+          shared_at = 'shared at hour of week'
         }
-        else
-        {
-          title = title.replace('__TOKEN__', 'shared at hour of day');
-        }
+
+        var title = 'Correlation between shares, clicks, cps and ' + shared_at + ', group by = ' + group_by + ' ' + pivot;
 
 
         var options = {
