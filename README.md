@@ -1,4 +1,4 @@
 shared_at_hour
 ==============
 
-Clicks, clicks per share, and share as a function of when then share is published
+Test code of using the shared_at_hour_of_day/week options in awe.sm stats api.  Create graphs to see how clicks, number of shares, click per share related to the share creation time
